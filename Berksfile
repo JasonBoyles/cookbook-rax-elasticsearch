@@ -8,4 +8,4 @@ cookbook 'build-essential'
 cookbook 'java'
 cookbook 'elasticsearch',
   :git => 'https://github.com/elasticsearch/cookbook-elasticsearch.git',
-  :ref => 'af5e579247b7183805559bed73e2e08164dc25c6'
+  :ref => 'e65d06f7388185fe26647413bfac41757746a7a4'
