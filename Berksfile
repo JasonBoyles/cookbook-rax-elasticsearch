@@ -2,9 +2,10 @@ site :opscode
 
 metadata
 
-cookbook 'java',
-  :git => 'https://github.com/socrata-cookbooks/java.git',
-  :ref => 'f03896af28dc905d7cb416b38a9031906a50acd7'
+
+cookbook 'apt'
+cookbook 'build-essential'
+cookbook 'java'
 cookbook 'elasticsearch',
   :git => 'https://github.com/elasticsearch/cookbook-elasticsearch.git',
-  :ref => 'e65d06f7388185fe26647413bfac41757746a7a4'
+  :ref => 'af5e579247b7183805559bed73e2e08164dc25c6'
