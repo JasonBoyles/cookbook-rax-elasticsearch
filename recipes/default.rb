@@ -10,13 +10,14 @@
 node.set[:java][:install_flavor] = 'openjdk'
 node.set[:java][:jdk_version] = 7
 
-include_recipe 'java::default'
+include_recipe 'java'
 
-#cn_interface_ipv4 =                                  \
-#  node[:network][:interfaces][:en2][:addresses].find \
-#  {|addr, addr_info| addr_info[:family] == "inet"}.first
+cn_interface_ipv4 = node[:network][:interfaces][:eth2][:addresses].find \
+  {|addr, addr_info| addr_info[:family] == "inet"}.first
 
-# node.set[:elasticsearch][:custom_config] = {
-#  'discovery.zen.ping.multicast.address' => cn_interface_ipv4 }
+Chef::Log.info("print interface ip is #{cn_interface_ipv4}")
+
+node.set[:elasticsearch][:custom_config] = {
+  'discovery.zen.ping.multicast.address' => cn_interface_ipv4 }
 
 include_recipe 'elasticsearch::default'
