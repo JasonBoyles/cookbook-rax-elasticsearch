@@ -12,6 +12,7 @@ node.set[:java][:jdk_version] = 7
 
 include_recipe 'java'
 
+# find the first ipv4 address of the cloud network interface
 cn_interface_ipv4 = node[:network][:interfaces][:eth2][:addresses].find \
   {|addr, addr_info| addr_info[:family] == "inet"}.first
 
@@ -21,3 +22,4 @@ node.set[:elasticsearch][:custom_config] = {
   'discovery.zen.ping.multicast.address' => cn_interface_ipv4 }
 
 include_recipe 'elasticsearch::default'
+include_recipe 'elasticsearch::proxy'
