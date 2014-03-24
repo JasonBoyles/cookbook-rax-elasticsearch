@@ -30,7 +30,7 @@ firewall 'ufw' do
 end
 
 firewall_rule 'elasticsearch_intracluster' do
-  port_range      9200..9300
+  port_range      9300..9400
   protocol  :tcp
   interface 'eth2'
   action    :allow
