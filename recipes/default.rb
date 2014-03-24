@@ -31,6 +31,7 @@ end
 
 firewall_rule 'elasticsearch_intracluster' do
   port_range      9200..9300
+  protocol  :tcp
   interface 'eth2'
   action    :allow
 end
