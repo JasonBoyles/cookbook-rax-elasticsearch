@@ -23,5 +23,28 @@ node.set[:elasticsearch][:custom_config] = {
   'network.publish_host' => cn_interface_ipv4
   }
 
+include_recipe 'firewall::default'
+
+firewall 'ufw' do
+  action :enable
+end
+
+firewall_rule 'elasticsearch_intracluster' do
+  port      9200..9300
+  interface 'eth2'
+  action    :allow
+end
+
+firewall_rule 'elasticsearch_proxy' do
+  port      8080
+  action    :allow
+end
+
+firewall_rule 'ssh' do
+  port      22
+  action    :allow
+end
+
+
 include_recipe 'elasticsearch::default'
 include_recipe 'elasticsearch::proxy'
