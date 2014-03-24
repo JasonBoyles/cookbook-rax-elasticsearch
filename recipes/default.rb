@@ -20,8 +20,7 @@ Chef::Log.info("print interface ip is #{cn_interface_ipv4}")
 
 node.set[:elasticsearch][:custom_config] = {
   'discovery.zen.ping.multicast.address' => cn_interface_ipv4,
-  'network.publish_host' => cn_interface_ipv4,
-  'network.bind_host' => '127.0.0.1'
+  'network.publish_host' => cn_interface_ipv4
   }
 
 include_recipe 'elasticsearch::default'
